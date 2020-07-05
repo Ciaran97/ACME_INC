@@ -1,0 +1,91 @@
+﻿@model MVC_Test.PRODUCT
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>PRODUCT</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PRODUCT_NAME, "Product Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PRODUCT_NAME, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PRODUCT_NAME, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PRODUCT_DESCRIPTION, "Product Description", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PRODUCT_DESCRIPTION, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PRODUCT_DESCRIPTION, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PRICE, "Product Price", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PRICE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PRICE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PRODUCT_IMAGE, "Product Image", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @if (Model.PRODUCT_IMAGE != null)
+            {
+
+                @Html.HiddenFor(model => model.PRODUCT_IMAGE)
+                {
+                    var base64 = Convert.ToBase64String(Model.PRODUCT_IMAGE);
+                    var imgSrc = String.Format("data:image/*;base64, {0}", base64);
+                    <img src="@imgSrc" width="200" height="200" alt="Image Not Found" class="mx-auto" />
+                }
+
+
+
+            }
+            else
+            {
+                <img src="/Content/Images/image-not-available.png" width="200" height="200" alt="Image Not Found" class="mx-auto" />
+            }
+            @Html.TextBoxFor(model => model.PRODUCT_IMAGE, new { htmlAttributes = new { @class = "form-control" }, type = "file" })
+            @Html.ValidationMessageFor(model => model.PRODUCT_IMAGE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CATEGORY_ID, "Category Name", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CATEGORY_ID", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CATEGORY_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,80 @@
+﻿@model MVC_Test.PRODUCT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>PRODUCT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCT_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_NAME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCT_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRODUCT_DESCRIPTION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRICE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PRICE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PRODUCT_IMAGE)
+        </dt>
+
+        <dd>
+            @if (Model.PRODUCT_IMAGE != null)
+            {
+
+                @Html.HiddenFor(model => model.PRODUCT_IMAGE)
+                {
+                    var base64 = Convert.ToBase64String(Model.PRODUCT_IMAGE);
+                    var imgSrc = String.Format("data:image/*;base64, {0}", base64);
+                    <img src="@imgSrc" width="200" height="200" alt="Image Not Found" class="mx-auto" />
+                }
+
+
+
+            }
+            else
+            {
+                <img src="/Content/Images/image-not-available.png" width="200" height="200" alt="Image Not Found" class="mx-auto" />
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CATEGORy.CATEGORY_NAME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CATEGORy.CATEGORY_NAME)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

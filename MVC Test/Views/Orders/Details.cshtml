@@ -1,0 +1,50 @@
+﻿@model MVC_Test.ORDER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ORDER</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_ORDERED)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_ORDERED)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COURIER)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COURIER)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADDRESS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

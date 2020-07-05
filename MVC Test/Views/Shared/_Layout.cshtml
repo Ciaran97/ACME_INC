@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Signature Business Solutions</title>
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @using MVC_Test.Utilities
+
+
+</head>
+
+<body class="pt-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            @Html.ActionLink("Signature Business Solutions", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item @Html.IsActive("Products", "Index")">@Html.ActionLink("Home", "Index", "Products", null, new { @class = "nav-link" })</li>
+                <li class="nav-item @Html.IsActive("Home", "About")">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item @Html.IsActive("Home", "Contact")">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                <li class="nav-item">
+                    @if (Session["cart"] != null)
+                    {
+                        List<Item> cart = (List<Item>)Session["cart"];
+                        <a href="~/Cart/Index"><i class="fas fa fa-shopping-cart nav-link @Html.IsActive("Cart", "Index")"> (@cart.Count)</i></a>
+                    }
+
+                </li>
+                <li> </li>
+            </ul>
+            @using (Html.BeginForm("Index", "Products",null, FormMethod.Post , new { @class = "form-inline my-2 my-lg-0" }))
+            {
+                @Html.TextBox("search", null, new { @class = "form-control mr-sm-2", @placeholder = "Search", id="SearchVal" })
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+            }
+
+            @{
+                if (ViewBag.SearchKey != null)
+                {
+                    <span>
+                        Search Key: @ViewBag.SearchKey
+                    </span>
+                }
+            }
+
+            @Html.Partial("_LoginPartial")
+        </div>
+
+    </nav>
+
+    <div class="container body-content mt-4">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Signature Business Solutions</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

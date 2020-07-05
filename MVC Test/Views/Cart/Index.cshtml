@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart Page</h2>
+
+<table cellpadding="2" cellspacing="2" border="1" class="text-center">
+    <tr>
+
+
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Option</th>
+    </tr>
+    @if ((List<Item>)Session["cart"] != null)
+    {
+        foreach (Item item in (List<Item>)Session["cart"])
+        {
+<tr>
+
+    <td>@item.Product.PRODUCT_NAME</td>
+    <td>
+        @if (item.Product.PRODUCT_IMAGE != null)
+        {
+
+            @Html.HiddenFor(modelItem => item.Product.PRODUCT_IMAGE)
+            {
+                var base64 = Convert.ToBase64String(item.Product.PRODUCT_IMAGE);
+                var imgSrc = String.Format("data:image/*;base64, {0}", base64);
+                <img src="@imgSrc" width="100" height="100" class="mx-auto" />
+            }
+
+
+
+        }
+        else
+        {
+            <img src="/Content/Images/image-not-available.png" width="100" height="100" alt="Image Not Found" class="mx-auto" />
+        }
+    </td>
+    <td>@Html.DisplayFor(Model => item.Product.PRICE)</td>
+
+    <td>@item.Quantity</td>
+    <td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.ID})" class="btn btn-danger fas fa fa-trash mx-auto"></a></td>
+
+
+</tr>
+        }
+    }
+
+
+  
+</table>
+<br>
+<a href="@Url.Action("Index", "Products")" class="btn btn-primary">Continue Shopping</a>
+
+<a href="#" class="btn btn-success">Place Order</a>
+
+
