@@ -11,7 +11,9 @@ namespace MVC_Test
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PRODUCT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +23,22 @@ namespace MVC_Test
         }
     
         public int ID { get; set; }
+
+        [DisplayName("Product Name")]
         public string PRODUCT_NAME { get; set; }
+
+        [DisplayName("Product Description")]
         public string PRODUCT_DESCRIPTION { get; set; }
+
+        [DisplayName("Product Image")]
         public byte[] PRODUCT_IMAGE { get; set; }
+
+        
         public int CATEGORY_ID { get; set; }
+
+
+        [DataType(DataType.Currency)]
+        [DisplayName("Price")]
         public Nullable<decimal> PRICE { get; set; }
     
         public virtual CATEGORy CATEGORy { get; set; }

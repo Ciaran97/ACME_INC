@@ -11,7 +11,8 @@ namespace MVC_Test
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class CATEGORy
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,11 @@ namespace MVC_Test
         }
     
         public int ID { get; set; }
+
+        [DisplayName("Category Name")]
         public string CATEGORY_NAME { get; set; }
+
+        [DisplayName("Category Description")]
         public string CATEGORY_DESCRIPTION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

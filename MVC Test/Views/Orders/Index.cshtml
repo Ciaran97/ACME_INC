@@ -1,51 +1,44 @@
-﻿@model IEnumerable<MVC_Test.ORDER>
+﻿@model IEnumerable<MVC_Test.Models.Orders>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Orders</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DATE_ORDERED)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.COURIER)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ADDRESS)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoryName)
+                </th>
+                <th> @Html.DisplayNameFor(model => model.TotalPrice)</th>
+                <th> @Html.DisplayNameFor(model => model.ProductCount)</th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DATE_ORDERED)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.COURIER)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ADDRESS)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductCount)
+                    </td>
 
-</table>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <div class="col">
+        <img src="@Url.Action("DrawChart")" alt="Chart" />
+    </div>
+</div>
+
+
+

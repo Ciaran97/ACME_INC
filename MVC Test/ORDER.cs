@@ -11,7 +11,8 @@ namespace MVC_Test
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class ORDER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,11 @@ namespace MVC_Test
     
         public int ID { get; set; }
         public System.DateTime DATE_ORDERED { get; set; }
+
+        [DisplayName("Courier")]
         public string COURIER { get; set; }
+
+        [DisplayName("Address")]
         public string ADDRESS { get; set; }
         public string CUSTOMER_ID { get; set; }
     
