@@ -18,7 +18,7 @@
     @foreach (var item in Model)
     {
 
-        <div class="col">
+        <div class="col-3">
 
             <div class="card" style="width: 18rem;">
 
@@ -57,11 +57,11 @@
                 }
                 @if (User.IsInRole("Employee"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning m-2" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger m-2" })
                 }
 
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-dark m-2" })
 
             </div>
             </div>

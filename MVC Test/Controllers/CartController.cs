@@ -7,8 +7,8 @@ using System.Web.Mvc;
 namespace MVC_Test.Controllers
 {
 
-    [Authorize(Roles = "Customer")]
-    [Authorize(Roles = "Employee")]
+    [Authorize(Roles = "Customer,Employee")]
+   // [Authorize(Roles = "Employee")]
     public class CartController : Controller
     {
 
