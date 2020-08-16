@@ -7,11 +7,12 @@
 <h2>Our Products</h2>
 @if (User.IsInRole("Employee"))
 {
-<p class="lead"> @Html.ActionLink("Create New", "Create")</p>
+    <a href="@Url.Action("Create", "Products")" class="btn btn-success fas fa fa-plus-square"></a>
+
 }
 
 <p>
-   
+
 </p>
 
 <div class="row">
@@ -41,29 +42,33 @@
                 }
 
 
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(Model => item.PRODUCT_NAME)</h5>
-                <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(Model => item.PRICE)</h6>
-                <p class="card-text">@Html.DisplayFor(Model => item.PRODUCT_DESCRIPTION)</p>
-                @if (User.IsInRole("Customer") || User.IsInRole("Employee"))
-                {
-                    <a href="@Url.Action("Buy", "Cart", new { id = item.ID })" class="btn btn-success">Add To Cart</a>
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(Model => item.PRODUCT_NAME)</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(Model => item.PRICE)</h6>
+                    <p class="card-text">@Html.DisplayFor(Model => item.PRODUCT_DESCRIPTION)</p>
+                    @if (User.IsInRole("Customer") || User.IsInRole("Employee"))
+                    {
+                        <a href="@Url.Action("Buy", "Cart", new { id = item.ID })" class="btn btn-success fas fa fa-cart-plus"></a>
 
-                }
-                else
-                {
-                    <a href="#" class="btn btn-success disabled">Login to order online</a>
+                    }
+                    else
+                    {
+                        <a href="#" class="btn btn-success disabled">Login to order online</a>
 
-                }
-                @if (User.IsInRole("Employee"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-warning m-2" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger m-2" })
-                }
+                    }
+                    @if (User.IsInRole("Employee"))
+                    {
+                        <a href="@Url.Action("Edit", "Products", new { id = item.ID })" class="btn btn-warning fas fa fa-edit"></a>
+                        <a href="@Url.Action("Delete", "Products", new { id = item.ID })" class="btn btn-danger fas fa fa-trash"></a>
 
-                @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-dark m-2" })
 
-            </div>
+                        //    @Html.ActionLink("fa fas fa-eye", "Products", new { id = item.ID }, new { @class = "btn btn-warning m-2 fas fa fa-edit" })
+                        //   @Html.ActionLink(" fa fas fa-eye", "Products", new { id = item.ID }, new { @class = "btn btn-danger m-2 fas fa fa-trash" })
+                    }
+                    <a href="@Url.Action("Details", "Products", new { id = item.ID })" class="btn btn-dark fas fa fa-eye"></a>
+
+
+                </div>
             </div>
         </div>
     }
