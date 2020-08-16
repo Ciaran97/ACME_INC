@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Signature Business Solutions</title>
+    <title>@ViewBag.Title - ACME INC.</title>
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -19,7 +19,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            @Html.ActionLink("Signature Business Solutions", "Index", "Products", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("ACME INC." +
+           "", "Index", "Products", new { area = "" }, new { @class = "navbar-brand" })
         </div>
         <div class="navbar-collapse collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav mr-auto">
@@ -67,11 +68,11 @@
 
     </nav>
 
-    <div class="container body-content mt-4">
+    <div class="container body-content mt-4 p-0">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Signature Business Solutions</p>
+            <p>&copy; @DateTime.Now.Year - ACME INC. Created by Ciaran Swanepoel - 17001300</p>
         </footer>
     </div>
 

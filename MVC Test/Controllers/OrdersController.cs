@@ -18,7 +18,7 @@ namespace MVC_Test.Controllers
         private ACME_INCEntities db = new ACME_INCEntities();
 
         // GET: Orders
-        [Authorize(Roles = "Employees")]
+        [Authorize(Roles = "Employee")]
         public ActionResult Index()
         {
 
@@ -219,7 +219,7 @@ namespace MVC_Test.Controllers
             }
             
 
-            var chart = new Chart(width: 500, height: 400, theme: ChartTheme.Yellow)
+            var chart = new Chart(width: 600, height: 400, theme: ChartTheme.Yellow)
             .AddTitle("Sales Performance Report").DataBindTable(dataSource: tester, "CategoryName").SetXAxis().Write();
 
 
