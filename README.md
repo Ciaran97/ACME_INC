@@ -8,12 +8,12 @@ How to run application
 
 3. Open the solution file located in the project folder using Visual Studio.
 
-4. Create a new Data Entity Model in the project named 'xxx' and connect it to the newly restored database.
+4. Build the solution 
 
-5. Build the solution 
+5. Run the project! There should be all the data you need to test the application! NB!! if this error occurs: "Could not find a part of the path '...\MVC Test\bin\roslyn\csc.exe'", Please run the following command in your visual studio Package Manager Console: 'Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r', This will update the compiler for the project.
 
-6. Run the project! There should be all the data you need to test the application!
+6. You can create a new account and select the 'Employee' option. This will allow you to have full employee access to the system.
 
-7. You can create a new account and select the 'Employee' option. This will allow you to have full employee access to the system.
+7. You can now login, perform crud operations on the database and place orders!
 
-8. You can now login, perform crud operation on the database and place orders!
+
